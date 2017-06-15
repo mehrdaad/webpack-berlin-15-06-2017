@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -88,4 +89,10 @@ exports.loadJavaScript = ({ include, exclude }) => ({
       },
     ],
   },
+});
+
+exports.extractBundles = (bundles) => ({
+  plugins: bundles.map((bundle) => (
+    new webpack.optimize.CommonsChunkPlugin(bundle)
+  )),
 });
