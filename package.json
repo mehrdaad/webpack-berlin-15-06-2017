@@ -1,0 +1,24 @@
+{
+  "name": "webpack-berlin-15-06-2017",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/survivejs-sessions/webpack-berlin-15-06-2017.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/survivejs-sessions/webpack-berlin-15-06-2017/issues"
+  },
+  "homepage": "https://github.com/survivejs-sessions/webpack-berlin-15-06-2017#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^2.6.1"
+  }
+}
