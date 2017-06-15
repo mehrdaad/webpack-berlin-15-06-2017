@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 
 const parts = require('./webpack.parts');
 
@@ -16,7 +17,7 @@ const commonConfig = merge([
     },
     output: {
       path: PATHS.build,
-      filename: '[name].js',
+      filename: '[name].[chunkhash].js',
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -35,6 +36,9 @@ const productionConfig = merge([
       maxEntrypointSize: 100000, // in bytes
       maxAssetSize: 100000, // in bytes
     },
+    plugins: [
+      new webpack.NamedModulesPlugin(),
+    ],
   },
   parts.extractCSS({ use: 'css-loader' }),
   parts.extractBundles([
@@ -45,6 +49,9 @@ const productionConfig = merge([
         resource.indexOf('node_modules') >= 0 &&
         resource.match(/\.js$/)
       ),
+    },
+    {
+      name: 'manifest',
     },
   ]),
   parts.setFreeVariable(
